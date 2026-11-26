@@ -23,14 +23,30 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
+        $request->validate([
+            'email' => 'required|string',
             'password' => 'required|string',
         ], [
-            'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Format email tidak valid.',
+            'email.required' => 'Email atau Username wajib diisi.',
             'password.required' => 'Kata sandi wajib diisi.',
         ]);
+
+        $loginInput = trim($request->input('email'));
+        $password = $request->input('password');
+
+        // Dukungan fleksibel: jika user memasukkan username (misal 'admin' atau 'user')
+        if (!filter_var($loginInput, FILTER_VALIDATE_EMAIL)) {
+            if (strtolower($loginInput) === 'admin') {
+                $loginInput = 'admin@poliklinik.com';
+            } elseif (in_array(strtolower($loginInput), ['user', 'staff'])) {
+                $loginInput = 'user@poliklinik.com';
+            }
+        }
+
+        $credentials = [
+            'email' => $loginInput,
+            'password' => $password,
+        ];
 
         $remember = $request->boolean('remember');
 
@@ -48,7 +64,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email atau kata sandi yang Anda masukkan salah.',
+            'email' => 'Email/Username atau kata sandi yang Anda masukkan salah.',
         ])->onlyInput('email');
     }
 

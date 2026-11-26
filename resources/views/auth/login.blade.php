@@ -95,12 +95,12 @@
             <form action="{{ route('login.post') }}" method="POST" class="space-y-4">
                 @csrf
 
-                <!-- Email Input -->
+                <!-- Email / Username Input -->
                 <div>
-                    <label for="email" class="block text-xs font-bold text-slate-700 mb-1.5">Alamat Email:</label>
+                    <label for="email" class="block text-xs font-bold text-slate-700 mb-1.5">Email atau Username:</label>
                     <div class="relative">
-                        <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus
-                               placeholder="nama@poliklinik.com"
+                        <input type="text" name="email" id="email" value="{{ old('email') }}" required autofocus
+                               placeholder="admin@poliklinik.com atau admin"
                                class="w-full text-xs rounded-xl border border-slate-200 pl-10 pr-3.5 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden text-slate-800 font-medium">
                         <i class="fa-regular fa-envelope absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
                     </div>
@@ -141,34 +141,6 @@
                 </div>
             </form>
 
-            <!-- Quick Demo Accounts Helper -->
-            <div class="mt-6 pt-5 border-t border-slate-100">
-                <span class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider text-center mb-2.5">
-                    Klik Cepat Akun Demo:
-                </span>
-                <div class="grid grid-cols-2 gap-2">
-                    <button type="button" onclick="fillAccount('admin@poliklinik.com', 'admin123')" 
-                            class="p-2.5 rounded-xl border border-indigo-200 bg-indigo-50/60 hover:bg-indigo-100/70 text-indigo-900 text-left smooth-transition group">
-                        <div class="flex items-center justify-between mb-0.5">
-                            <span class="text-[10px] font-extrabold uppercase text-indigo-600 bg-white px-1.5 py-0.5 rounded border border-indigo-200">Admin</span>
-                            <i class="fa-solid fa-bolt text-amber-500 text-[10px]"></i>
-                        </div>
-                        <div class="text-[11px] font-bold truncate">admin@poliklinik.com</div>
-                        <div class="text-[10px] text-slate-500 font-mono">admin123</div>
-                    </button>
-
-                    <button type="button" onclick="fillAccount('user@poliklinik.com', 'user123')" 
-                            class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800 text-left smooth-transition group">
-                        <div class="flex items-center justify-between mb-0.5">
-                            <span class="text-[10px] font-extrabold uppercase text-slate-600 bg-white px-1.5 py-0.5 rounded border border-slate-200">Staff / User</span>
-                            <i class="fa-solid fa-user text-slate-400 text-[10px]"></i>
-                        </div>
-                        <div class="text-[11px] font-bold truncate">user@poliklinik.com</div>
-                        <div class="text-[10px] text-slate-500 font-mono">user123</div>
-                    </button>
-                </div>
-            </div>
-
         </div>
 
         <p class="text-center text-xs text-slate-400 mt-6">
@@ -188,11 +160,6 @@
                 pass.type = 'password';
                 eye.className = 'fa-regular fa-eye';
             }
-        }
-
-        function fillAccount(email, password) {
-            document.getElementById('email').value = email;
-            document.getElementById('password').value = password;
         }
     </script>
 </body>
