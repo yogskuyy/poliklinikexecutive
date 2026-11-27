@@ -40,7 +40,16 @@ class DashboardController extends Controller
         $selectedDay = $request->query('day', $this->getCurrentIndonesianDay());
         $selectedStatus = $request->query('status');
 
-        $polis = Poli::withCount(['doctors', 'visits'])->get();
+        // Patient Visits query (Prioritaskan kunjungan hari ini, jika hari baru belum ada data maka fallback ke tanggal kunjungan aktif)
+        $hasTodayVisits = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->exists();
+        $activeDate = $hasTodayVisits ? Carbon::today() : (PatientVisit::max('tanggal_kunjungan') ?? Carbon::today());
+
+        $polis = Poli::withCount([
+            'doctors',
+            'visits' => function ($query) use ($activeDate) {
+                $query->whereDate('tanggal_kunjungan', $activeDate);
+            }
+        ])->get();
 
         // Doctor Schedules query
         $schedulesQuery = DoctorSchedule::with(['doctor.poli'])
@@ -64,10 +73,6 @@ class DashboardController extends Controller
             $doctorsQuery->where('poli_id', $selectedPoliId);
         }
         $doctors = $doctorsQuery->get();
-
-        // Patient Visits query (Prioritaskan kunjungan hari ini, jika hari baru belum ada data maka fallback ke tanggal kunjungan aktif)
-        $hasTodayVisits = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->exists();
-        $activeDate = $hasTodayVisits ? Carbon::today() : (PatientVisit::max('tanggal_kunjungan') ?? Carbon::today());
 
         $visitsQuery = PatientVisit::with(['patient', 'poli', 'doctor'])
             ->whereDate('tanggal_kunjungan', $activeDate);
@@ -99,7 +104,7 @@ class DashboardController extends Controller
         ];
 
         foreach ($polis as $poli) {
-            $count = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())
+            $count = PatientVisit::whereDate('tanggal_kunjungan', $activeDate)
                 ->where('poli_id', $poli->id)
                 ->count();
             $poliChartLabels[] = $poli->kode_poli;
