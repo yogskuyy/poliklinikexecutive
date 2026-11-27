@@ -65,9 +65,12 @@ class DashboardController extends Controller
         }
         $doctors = $doctorsQuery->get();
 
-        // Patient Visits query
+        // Patient Visits query (Prioritaskan kunjungan hari ini, jika hari baru belum ada data maka fallback ke tanggal kunjungan aktif)
+        $hasTodayVisits = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->exists();
+        $activeDate = $hasTodayVisits ? Carbon::today() : (PatientVisit::max('tanggal_kunjungan') ?? Carbon::today());
+
         $visitsQuery = PatientVisit::with(['patient', 'poli', 'doctor'])
-            ->whereDate('tanggal_kunjungan', Carbon::today());
+            ->whereDate('tanggal_kunjungan', $activeDate);
 
         if ($selectedPoliId && $selectedPoliId !== 'all') {
             $visitsQuery->where('poli_id', $selectedPoliId);
@@ -80,10 +83,10 @@ class DashboardController extends Controller
         $visits = $visitsQuery->orderBy('jam_janji', 'asc')->get();
 
         // Statistics
-        $totalPasienHariIni = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->count();
-        $pasienSedangDiperiksa = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->where('status', 'sedang_diperiksa')->count();
-        $pasienMenunggu = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->where('status', 'menunggu')->count();
-        $pasienSelesai = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->where('status', 'selesai')->count();
+        $totalPasienHariIni = PatientVisit::whereDate('tanggal_kunjungan', $activeDate)->count();
+        $pasienSedangDiperiksa = PatientVisit::whereDate('tanggal_kunjungan', $activeDate)->where('status', 'sedang_diperiksa')->count();
+        $pasienMenunggu = PatientVisit::whereDate('tanggal_kunjungan', $activeDate)->where('status', 'menunggu')->count();
+        $pasienSelesai = PatientVisit::whereDate('tanggal_kunjungan', $activeDate)->where('status', 'selesai')->count();
         $dokterPraktekCount = Doctor::where('status_praktek', 'praktek')->count();
         $totalDokter = Doctor::count();
 
@@ -164,8 +167,11 @@ class DashboardController extends Controller
         $status = $request->query('status');
         $search = $request->query('search');
 
+        $hasTodayVisits = PatientVisit::whereDate('tanggal_kunjungan', Carbon::today())->exists();
+        $activeDate = $hasTodayVisits ? Carbon::today() : (PatientVisit::max('tanggal_kunjungan') ?? Carbon::today());
+
         $query = PatientVisit::with(['patient', 'poli', 'doctor'])
-            ->whereDate('tanggal_kunjungan', Carbon::today());
+            ->whereDate('tanggal_kunjungan', $activeDate);
 
         if ($poliId && $poliId !== 'all') {
             $query->where('poli_id', $poliId);
