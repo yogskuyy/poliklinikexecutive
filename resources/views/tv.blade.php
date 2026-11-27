@@ -154,137 +154,137 @@
             <!-- RIGHT: KPI Cards & Clinic Carousel (7 Cols or 12 Cols if video is disabled) -->
             <div class="{{ ($settings['show_video'] ?? '1') == '1' ? 'lg:col-span-7 xl:col-span-7' : 'lg:col-span-12 xl:col-span-12' }} flex flex-col justify-between gap-2.5 sm:gap-3 xl:gap-3.5 h-full min-h-0">
                 
-                <!-- 4 KPI Metrics (Proporsional & Seimbang untuk Layar TV) -->
-                <div class="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-2 sm:gap-2.5 xl:gap-3 shrink-0">
+                <!-- 4 KPI Metrics (Proporsional, Jelas & Terbaca dari Kejauhan di Layar TV) -->
+                <div class="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-3 xl:gap-3.5 shrink-0">
                     <!-- KPI 1: Total Pasien -->
-                    <div class="glass-card p-2.5 sm:p-3 xl:p-3.5 rounded-2xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
+                    <div class="glass-card p-3 sm:p-3.5 xl:p-4 rounded-2xl sm:rounded-3xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-slate-500">Total Pasien</span>
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 xl:w-10 xl:h-10 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
-                                <i class="fa-solid fa-users text-xs sm:text-sm"></i>
+                            <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-500">Total Pasien</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+                                <i class="fa-solid fa-users text-sm sm:text-base"></i>
                             </div>
                         </div>
-                        <div class="mt-1.5 sm:mt-2">
+                        <div class="mt-2">
                             <div class="flex items-baseline gap-2">
-                                <span class="text-2xl sm:text-3xl xl:text-3xl 2xl:text-4xl font-display font-black text-slate-900" id="kpiTotal">{{ $totalPasienHariIni }}</span>
-                                <span class="text-[10px] sm:text-xs font-extrabold text-emerald-600 bg-emerald-50 px-1.5 sm:px-2 py-0.5 rounded-md border border-emerald-200">+14%</span>
+                                <span class="text-3xl sm:text-4xl xl:text-4xl 2xl:text-5xl font-display font-black text-slate-900" id="kpiTotal">{{ $totalPasienHariIni }}</span>
+                                <span class="text-xs sm:text-sm font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200">+14%</span>
                             </div>
-                            <p class="text-[10px] sm:text-[11px] text-slate-500 font-bold mt-0.5">Kunjungan Terjadwal</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-bold mt-1">Kunjungan Terjadwal</p>
                         </div>
                     </div>
 
                     <!-- KPI 2: Diperiksa -->
-                    <div class="glass-card p-2.5 sm:p-3 xl:p-3.5 rounded-2xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
+                    <div class="glass-card p-3 sm:p-3.5 xl:p-4 rounded-2xl sm:rounded-3xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-slate-500">Diperiksa</span>
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 xl:w-10 xl:h-10 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);">
-                                <i class="fa-solid fa-user-doctor text-xs sm:text-sm"></i>
+                            <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-500">Diperiksa</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);">
+                                <i class="fa-solid fa-user-doctor text-sm sm:text-base"></i>
                             </div>
                         </div>
-                        <div class="mt-1.5 sm:mt-2">
+                        <div class="mt-2">
                             <div class="flex items-baseline gap-2">
-                                <span class="text-2xl sm:text-3xl xl:text-3xl 2xl:text-4xl font-display font-black text-cyan-600" id="kpiDiperiksa">{{ $pasienSedangDiperiksa }}</span>
-                                <span class="text-[10px] sm:text-xs font-extrabold text-cyan-700 bg-cyan-50 px-1.5 sm:px-2 py-0.5 rounded-md border border-cyan-200">Suite</span>
+                                <span class="text-3xl sm:text-4xl xl:text-4xl 2xl:text-5xl font-display font-black text-cyan-600" id="kpiDiperiksa">{{ $pasienSedangDiperiksa }}</span>
+                                <span class="text-xs sm:text-sm font-extrabold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded-lg border border-cyan-200">Suite</span>
                             </div>
-                            <p class="text-[10px] sm:text-[11px] text-slate-500 font-bold mt-0.5">Sedang Konsultasi</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-bold mt-1">Sedang Konsultasi</p>
                         </div>
                     </div>
 
                     <!-- KPI 3: Menunggu -->
-                    <div class="glass-card p-2.5 sm:p-3 xl:p-3.5 rounded-2xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
+                    <div class="glass-card p-3 sm:p-3.5 xl:p-4 rounded-2xl sm:rounded-3xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-slate-500">Menunggu</span>
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 xl:w-10 xl:h-10 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">
-                                <i class="fa-solid fa-mug-hot text-xs sm:text-sm"></i>
+                            <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-500">Menunggu</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">
+                                <i class="fa-solid fa-mug-hot text-sm sm:text-base"></i>
                             </div>
                         </div>
-                        <div class="mt-1.5 sm:mt-2">
+                        <div class="mt-2">
                             <div class="flex items-baseline gap-2">
-                                <span class="text-2xl sm:text-3xl xl:text-3xl 2xl:text-4xl font-display font-black text-amber-600" id="kpiMenunggu">{{ $pasienMenunggu }}</span>
-                                <span class="text-[10px] sm:text-xs font-extrabold text-amber-700 bg-amber-50 px-1.5 sm:px-2 py-0.5 rounded-md border border-amber-200">Lounge</span>
+                                <span class="text-3xl sm:text-4xl xl:text-4xl 2xl:text-5xl font-display font-black text-amber-600" id="kpiMenunggu">{{ $pasienMenunggu }}</span>
+                                <span class="text-xs sm:text-sm font-extrabold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-200">Lounge</span>
                             </div>
-                            <p class="text-[10px] sm:text-[11px] text-slate-500 font-bold mt-0.5">Antrian di Lounge</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-bold mt-1">Antrian di Lounge</p>
                         </div>
                     </div>
 
                     <!-- KPI 4: Dokter Aktif -->
-                    <div class="glass-card p-2.5 sm:p-3 xl:p-3.5 rounded-2xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
+                    <div class="glass-card p-3 sm:p-3.5 xl:p-4 rounded-2xl sm:rounded-3xl flex flex-col justify-between shadow-xs border border-slate-200/90 bg-white/95">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-slate-500">Dokter Aktif</span>
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 xl:w-10 xl:h-10 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                                <i class="fa-solid fa-stethoscope text-xs sm:text-sm"></i>
+                            <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-500">Dokter Aktif</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                <i class="fa-solid fa-stethoscope text-sm sm:text-base"></i>
                             </div>
                         </div>
-                        <div class="mt-1.5 sm:mt-2">
+                        <div class="mt-2">
                             <div class="flex items-baseline gap-2">
-                                <span class="text-2xl sm:text-3xl xl:text-3xl 2xl:text-4xl font-display font-black text-emerald-600" id="kpiDokter">{{ $dokterPraktekCount }}</span>
-                                <span class="text-[10px] sm:text-xs font-extrabold text-slate-500">/ {{ $totalDokter }} Dr</span>
+                                <span class="text-3xl sm:text-4xl xl:text-4xl 2xl:text-5xl font-display font-black text-emerald-600" id="kpiDokter">{{ $dokterPraktekCount }}</span>
+                                <span class="text-xs sm:text-sm font-extrabold text-slate-500">/ {{ $totalDokter }} Dr</span>
                             </div>
-                            <p class="text-[10px] sm:text-[11px] text-slate-500 font-bold mt-0.5">Siaga Praktek Hari Ini</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-bold mt-1">Siaga Praktek Hari Ini</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Auto-Rotating Clinic Carousel (Presisi, Proporsional & Badge Pasien Tampak Utuh) -->
-                <div class="glass-card p-3 sm:p-3.5 xl:p-4 rounded-2xl sm:rounded-3xl relative flex-1 min-h-0 flex flex-col justify-between border border-slate-200/90 shadow-sm"
+                <!-- Auto-Rotating Clinic Carousel (Tulisan Lebih Besar, Terbaca Jelas di TV & Badge Utuh) -->
+                <div class="glass-card p-3.5 sm:p-4 xl:p-4.5 rounded-2xl sm:rounded-3xl relative flex-1 min-h-0 flex flex-col justify-between border border-slate-200/90 shadow-sm"
                      id="tvPoliCarouselSection"
                      onmouseenter="pauseTvCarousel()" 
                      onmouseleave="resumeTvCarousel()">
                     
                     <!-- Carousel Header -->
-                    <div class="flex items-center justify-between shrink-0 mb-1.5 sm:mb-2">
-                        <div class="flex items-center gap-2 sm:gap-2.5">
-                            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs sm:text-sm shadow-xs border border-indigo-100">
+                    <div class="flex items-center justify-between shrink-0 mb-2">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm sm:text-base shadow-xs border border-indigo-100">
                                 <i class="fa-solid fa-hospital-user"></i>
                             </div>
                             <div>
-                                <h3 class="text-xs sm:text-sm xl:text-base font-display font-black text-slate-900 leading-tight">
+                                <h3 class="text-sm sm:text-base xl:text-lg font-display font-black text-slate-900 leading-tight">
                                     Poliklinik Spesialis Eksekutif
                                 </h3>
-                                <p class="text-[10px] sm:text-[11px] text-slate-500 font-semibold">Jadwal konsultasi &amp; beban kunjungan aktif</p>
+                                <p class="text-xs sm:text-sm text-slate-500 font-semibold">Jadwal konsultasi &amp; beban kunjungan aktif</p>
                             </div>
                         </div>
 
                         <!-- Controls -->
                         <div class="flex items-center gap-1.5">
                             <button onclick="slideTvCarousel('prev')" title="Sebelumnya" 
-                                    class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 flex items-center justify-center smooth-transition text-[11px] sm:text-xs shadow-xs">
+                                    class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 flex items-center justify-center smooth-transition text-xs shadow-xs">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </button>
                             <button onclick="slideTvCarousel('next')" title="Berikutnya" 
-                                    class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 flex items-center justify-center smooth-transition text-[11px] sm:text-xs shadow-xs">
+                                    class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 flex items-center justify-center smooth-transition text-xs shadow-xs">
                                 <i class="fa-solid fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
 
                     <!-- Carousel Viewport (Mengisi Penuh Tinggi & Lebar Container dengan Padding Aman) -->
-                    <div class="overflow-hidden w-full flex-1 min-h-0 pt-0.5 pb-2 flex flex-col" id="tvPoliViewport">
+                    <div class="overflow-hidden w-full flex-1 min-h-0 pt-1 pb-2 flex flex-col" id="tvPoliViewport">
                         <div id="tvPoliTrack" class="flex gap-3 sm:gap-3.5 h-full items-stretch w-full smooth-transition" style="transform: translateX(0px); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);">
                             @foreach($polis as $poli)
                             <div class="poli-carousel-card shrink-0 select-none h-full flex flex-col">
-                                <div class="w-full h-full p-2.5 sm:p-3 xl:p-3.5 rounded-2xl border border-slate-200/90 bg-white/95 hover:bg-white smooth-transition shadow-xs hover:shadow-md flex flex-col items-center justify-between text-center relative group">
+                                <div class="w-full h-full p-3 sm:p-4 xl:p-5 rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white/95 hover:bg-white smooth-transition shadow-xs hover:shadow-md flex flex-col items-center justify-between text-center relative group">
                                     
-                                    <!-- Gradient Icon Circle (Sleek & Proportional) -->
-                                    <div class="w-10 h-10 sm:w-11 sm:h-11 xl:w-13 xl:h-13 2xl:w-14 2xl:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-base sm:text-lg xl:text-xl shadow-xs group-hover:scale-105 smooth-transition shrink-0"
+                                    <!-- Gradient Icon Circle (Lebih Besar & Gagah) -->
+                                    <div class="w-14 h-14 sm:w-16 sm:h-16 xl:w-20 xl:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center text-white text-2xl sm:text-3xl xl:text-4xl shadow-md group-hover:scale-105 smooth-transition shrink-0"
                                          style="background: {{ $poli->warna_gradien }};">
                                         <i class="fa-solid {{ $poli->icon }}"></i>
                                     </div>
 
-                                    <!-- Poli Code & Full Name -->
-                                    <div class="my-auto py-0.5 sm:py-1 w-full px-1 flex flex-col items-center justify-center min-h-0">
-                                        <span class="text-sm sm:text-base xl:text-lg font-display font-black text-slate-900 block tracking-tight group-hover:text-indigo-600 smooth-transition leading-tight">
+                                    <!-- Poli Code & Full Name (Besar, Tebal & Sangat Jelas) -->
+                                    <div class="my-auto py-1 sm:py-2 w-full px-1 flex flex-col items-center justify-center min-h-0">
+                                        <span class="text-xl sm:text-2xl xl:text-3xl font-display font-black text-slate-900 block tracking-tight group-hover:text-indigo-600 smooth-transition leading-tight">
                                             {{ $poli->kode_poli }}
                                         </span>
-                                        <h4 class="text-[11px] sm:text-xs xl:text-sm font-extrabold text-slate-700 line-clamp-2 mt-0.5 leading-tight">
+                                        <h4 class="text-xs sm:text-sm xl:text-base font-extrabold text-slate-700 line-clamp-2 mt-1 sm:mt-1.5 leading-snug">
                                             {{ str_replace('Poli ', '', $poli->nama_poli) }}
                                         </h4>
                                     </div>
 
-                                    <!-- Visitor Badge (Jelas, Tampak Utuh & Bebas Potong) -->
-                                    <div class="shrink-0 w-full pt-1 pb-0.5 flex justify-center">
-                                        <span class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl text-[11px] sm:text-xs xl:text-sm font-black bg-indigo-50 text-indigo-700 border border-indigo-200/90 shadow-xs whitespace-nowrap">
-                                            <i class="fa-solid fa-users text-[10px] sm:text-xs text-indigo-600"></i>
+                                    <!-- Visitor Badge (Jelas, Tebal & Tampak Utuh) -->
+                                    <div class="shrink-0 w-full pt-1.5 pb-0.5 flex justify-center">
+                                        <span class="inline-flex items-center justify-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 xl:px-5 xl:py-2.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm xl:text-base font-black bg-indigo-50 text-indigo-700 border-2 border-indigo-200/90 shadow-xs whitespace-nowrap">
+                                            <i class="fa-solid fa-users text-xs sm:text-sm text-indigo-600"></i>
                                             <span>{{ $poli->visits_count }} Pasien</span>
                                         </span>
                                     </div>
@@ -296,7 +296,7 @@
                     </div>
 
                     <!-- Dots Indicator -->
-                    <div class="flex items-center justify-center gap-1.5 mt-1.5 shrink-0" id="tvCarouselDots"></div>
+                    <div class="flex items-center justify-center gap-2 mt-2 shrink-0" id="tvCarouselDots"></div>
                 </div>
             </div>
 
