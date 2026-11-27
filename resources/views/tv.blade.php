@@ -59,67 +59,67 @@
         }
     </style>
 </head>
-<body class="h-screen max-h-screen overflow-hidden flex flex-col justify-between font-sans antialiased text-slate-800 select-none p-3 sm:p-4 lg:p-5 relative">
+<body class="min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden overflow-y-auto flex flex-col justify-between font-sans antialiased text-slate-800 select-none p-2.5 sm:p-3.5 md:p-4 lg:p-5 relative">
 
     <!-- Top TV Navigation Header -->
-    <header class="glass-card rounded-2xl px-5 py-3 shadow-xs border border-slate-200/90 shrink-0 mb-3 flex items-center justify-between">
+    <header class="glass-card rounded-2xl px-3 sm:px-5 py-2.5 sm:py-3 shadow-xs border border-slate-200/90 shrink-0 mb-2.5 sm:mb-3 flex items-center justify-between gap-2 flex-wrap">
         <!-- Logo & Branding -->
-        <div class="flex items-center gap-3.5">
-            <div class="w-11 h-11 rounded-2xl flex items-center justify-center p-0.5 shadow-md shadow-indigo-500/20"
+        <div class="flex items-center gap-2.5 sm:gap-3.5">
+            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center p-0.5 shadow-md shadow-indigo-500/20 shrink-0"
                  style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);">
                 <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-indigo-600">
-                    <i class="fa-solid fa-hospital-user text-xl" style="background: linear-gradient(135deg, #4f46e5, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                    <i class="fa-solid fa-hospital-user text-lg sm:text-xl" style="background: linear-gradient(135deg, #4f46e5, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
                 </div>
             </div>
             <div>
-                <h1 class="text-base sm:text-lg font-display font-extrabold tracking-tight text-slate-900">
+                <h1 class="text-sm sm:text-base lg:text-lg font-display font-extrabold tracking-tight text-slate-900 leading-tight">
                     {{ $settings['hospital_name'] ?? 'POLIKLINIK EKSEKUTIF' }}
                 </h1>
-                <p class="text-[11px] text-slate-500 font-medium leading-none mt-0.5">
+                <p class="hidden sm:block text-[11px] text-slate-500 font-medium leading-none mt-0.5">
                     {{ $settings['hospital_subtitle'] ?? 'Sistem Monitoring Terintegrasi & Alur Pasien Prioritas' }}
                 </p>
             </div>
         </div>
 
-        <!-- Center: Realtime Digital Clock -->
-        <div class="flex items-center gap-3 px-4 py-1.5 rounded-xl bg-slate-100/90 border border-slate-200/80 shadow-inner">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs">
+        <!-- Center: Realtime Digital Clock (Responsive) -->
+        <div class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 rounded-xl bg-slate-100/90 border border-slate-200/80 shadow-inner">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-[11px] sm:text-xs shrink-0">
                 <i class="fa-regular fa-clock"></i>
             </div>
             <div>
                 <div id="tvLiveClock" class="text-xs sm:text-sm font-black font-mono text-slate-900 tracking-wider">00:00:00 WIB</div>
-                <div id="tvLiveDate" class="text-[10px] text-slate-500 font-semibold">Memuat waktu...</div>
+                <div id="tvLiveDate" class="hidden sm:block text-[10px] text-slate-500 font-semibold">Memuat waktu...</div>
             </div>
         </div>
 
         <!-- Right Controls: Fullscreen & Switch to Web -->
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2">
             <!-- Fullscreen TV Toggle Button -->
             <button onclick="toggleTvFullscreen()" title="Layar Penuh TV (Fullscreen)" 
-                    class="w-9 h-9 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 flex items-center justify-center smooth-transition shadow-xs">
+                    class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 flex items-center justify-center smooth-transition shadow-xs">
                 <i class="fa-solid fa-expand text-xs" id="tvFullscreenIcon"></i>
             </button>
 
             <!-- Switch to Web Dashboard -->
             <a href="{{ route('dashboard') }}" title="Buka Tampilan Web Dashboard" 
-               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-300 text-slate-600 hover:text-indigo-600 text-xs font-bold smooth-transition shadow-xs">
+               class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-300 text-slate-600 hover:text-indigo-600 text-xs font-bold smooth-transition shadow-xs">
                 <i class="fa-solid fa-desktop text-xs"></i>
                 <span class="hidden md:inline">Web Dashboard</span>
             </a>
         </div>
     </header>
 
-    <!-- Main Content Area: Fills exactly remaining screen height (flex-1 min-h-0) -->
-    <main class="flex-1 min-h-0 flex flex-col justify-between mb-3">
+    <!-- Main Content Area: Responsive Grid (Stacks on mobile, 12-col side-by-side on lg/TV) -->
+    <main class="flex-1 min-h-0 flex flex-col justify-between mb-2.5 sm:mb-3">
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 xl:gap-4.5 h-full min-h-0 items-stretch">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-3.5 xl:gap-4.5 h-full min-h-0 items-stretch">
             
             @if(($settings['show_video'] ?? '1') == '1')
-            <!-- LEFT: Video Player (5 Cols) -->
-            <div class="lg:col-span-5 xl:col-span-5 flex flex-col h-full min-h-0">
-                <div class="glass-card rounded-3xl p-3 h-full flex flex-col justify-between relative overflow-hidden border border-slate-200/90 shadow-sm">
+            <!-- LEFT: Video Player (Responsive aspect-ratio on mobile, 5 Cols on desktop/TV) -->
+            <div class="lg:col-span-5 xl:col-span-5 flex flex-col h-auto lg:h-full min-h-0">
+                <div class="glass-card rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 h-full flex flex-col justify-between relative overflow-hidden border border-slate-200/90 shadow-sm">
                     
-                    <div id="tvPlayerContainer" class="relative w-full rounded-2xl overflow-hidden bg-slate-950 flex-1 min-h-0 flex items-center justify-center shadow-inner">
+                    <div id="tvPlayerContainer" class="relative w-full rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950 aspect-video lg:aspect-auto flex-1 min-h-[200px] sm:min-h-[260px] lg:min-h-0 flex items-center justify-center shadow-inner">
                         <!-- HTML5 Video -->
                         <video id="tvBroadcastVideo" class="w-full h-full object-cover absolute inset-0" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop">
                             <source src="{{ $settings['video_url'] ?? '' }}" type="video/mp4">
@@ -129,16 +129,16 @@
                         <iframe id="tvBroadcastIframe" class="w-full h-full absolute inset-0 hidden border-0" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                         <!-- Top TV Badge -->
-                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-20 pointer-events-none">
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold border border-white/20">
+                        <div class="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between z-20 pointer-events-none">
+                            <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] sm:text-xs font-bold border border-white/20">
                                 <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-                                <span class="text-rose-400 font-extrabold uppercase text-[11px]">LIVE SIARAN TV</span>
+                                <span class="text-rose-400 font-extrabold uppercase text-[10px] sm:text-[11px]">LIVE SIARAN TV</span>
                             </div>
                         </div>
 
                         <!-- Bottom Title Overlay -->
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent text-white z-20">
-                            <span class="text-[10px] font-black uppercase tracking-wider text-cyan-400 block mb-0.5">
+                        <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent text-white z-20">
+                            <span class="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-cyan-400 block mb-0.5">
                                 <i class="fa-solid fa-circle-play mr-1"></i> Sedang Ditayangkan
                             </span>
                             <h4 id="tvVideoTitle" class="text-xs sm:text-sm font-extrabold text-white line-clamp-1 leading-snug">
@@ -152,7 +152,7 @@
             @endif
 
             <!-- RIGHT: KPI Cards & Clinic Carousel (7 Cols or 12 Cols if video is disabled) -->
-            <div class="{{ ($settings['show_video'] ?? '1') == '1' ? 'lg:col-span-7 xl:col-span-7' : 'lg:col-span-12 xl:col-span-12' }} flex flex-col justify-between gap-3.5 sm:gap-4.5 h-full min-h-0">
+            <div class="{{ ($settings['show_video'] ?? '1') == '1' ? 'lg:col-span-7 xl:col-span-7' : 'lg:col-span-12 xl:col-span-12' }} flex flex-col justify-between gap-3 sm:gap-3.5 xl:gap-4 h-full min-h-0">
                 
                 <!-- 4 KPI Metrics (Diperbesar, Tulisan Jelas, & Kontras Tinggi Khusus Layar TV) -->
                 <div class="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-3.5 xl:gap-4 shrink-0">
@@ -420,9 +420,12 @@
             const vp = document.getElementById('tvPoliViewport');
             if (!vp) return 3;
             const w = vp.clientWidth;
-            if (w < 550) return 1;
+            if (w < 480) return 1;
             if (w < 768) return 2;
-            return 3; // Selalu tampil 3 poli secara presisi
+            if (w < 1366) return 3;
+            const hasVideo = {{ ($settings['show_video'] ?? '1') == '1' ? 'true' : 'false' }};
+            if (!hasVideo && w >= 1366) return 4;
+            return 3;
         }
 
         function updateTvCardWidths() {

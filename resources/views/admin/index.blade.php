@@ -78,24 +78,24 @@
 
     <!-- Top Navigation Header -->
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex flex-wrap items-center justify-between gap-3">
             
-            <div class="flex items-center gap-3.5">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
-                    <i class="fa-solid fa-sliders text-xl"></i>
+            <div class="flex items-center gap-2.5 sm:gap-3.5">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 shrink-0">
+                    <i class="fa-solid fa-sliders text-base sm:text-xl"></i>
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <h1 class="font-display font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">Panel Admin &amp; Pengaturan</h1>
-                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-100 text-indigo-700 border border-indigo-200">
+                        <h1 class="font-display font-extrabold text-base sm:text-lg lg:text-xl text-slate-900 tracking-tight">Panel Admin</h1>
+                        <span class="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider bg-indigo-100 text-indigo-700 border border-indigo-200">
                             Dashboard TV
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500">Kelola siaran video, pengumuman running text, serta alur data poliklinik</p>
+                    <p class="hidden sm:block text-xs text-slate-500">Kelola siaran video, pengumuman running text, serta alur data poliklinik</p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-2.5">
+            <div class="flex items-center gap-2 sm:gap-2.5">
                 <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-xs text-slate-700 font-semibold">
                     <i class="fa-solid fa-user-shield text-indigo-600"></i>
                     <span>{{ Auth::user()->name ?? 'Administrator' }}</span>
@@ -104,7 +104,7 @@
                 <!-- Buka Layar TV Ruang Tunggu (/tv) -->
                 <a href="{{ route('tv.display') }}" target="_blank" 
                    title="Buka Siaran TV Ruang Tunggu Pasien (100vh Full Screen)"
-                   class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md shadow-indigo-500/20 flex items-center gap-2 smooth-transition">
+                   class="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md shadow-indigo-500/20 flex items-center gap-1.5 sm:gap-2 smooth-transition">
                     <i class="fa-solid fa-tv text-xs"></i>
                     <span class="hidden md:inline">Layar TV (/tv)</span>
                     <span class="md:hidden">TV</span>
@@ -114,7 +114,7 @@
                 <!-- Buka Web Dashboard (/) -->
                 <a href="{{ route('dashboard') }}" target="_blank" 
                    title="Buka Web Dashboard Utama"
-                   class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 hover:text-indigo-600 font-bold text-xs shadow-xs flex items-center gap-2 smooth-transition">
+                   class="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 hover:text-indigo-600 font-bold text-xs shadow-xs flex items-center gap-1.5 sm:gap-2 smooth-transition">
                     <i class="fa-solid fa-desktop text-xs text-indigo-500"></i>
                     <span class="hidden md:inline">Web Dashboard (/)</span>
                     <span class="md:hidden">Web</span>
@@ -122,7 +122,7 @@
                 </a>
 
                 <a href="{{ route('logout') }}" title="Logout dari Panel Admin"
-                   class="w-9 h-9 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 flex items-center justify-center smooth-transition shadow-xs">
+                   class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 flex items-center justify-center smooth-transition shadow-xs">
                     <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
                 </a>
             </div>
@@ -145,8 +145,8 @@
         </div>
         @endif
 
-        <!-- Quick Summary Cards -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <!-- Quick Summary Cards (Responsive 1-Col Mobile, 2-Col Tablet, 4-Col Desktop) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 mb-6 sm:mb-8">
             <div class="glass-card p-4 rounded-2xl shadow-xs border border-slate-200 flex items-center gap-3.5">
                 <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg font-bold">
                     <i class="fa-solid fa-users"></i>

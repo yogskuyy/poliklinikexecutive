@@ -199,18 +199,18 @@
             <div class="flex items-center justify-between">
                 
                 <!-- Logo & Brand Title -->
-                <div class="flex items-center gap-4">
-                    <div class="w-13 h-13 rounded-2xl flex items-center justify-center shadow-glow-primary p-0.5"
+                <div class="flex items-center gap-2.5 sm:gap-4">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-glow-primary p-0.5 shrink-0"
                          style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);">
-                        <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-indigo-600">
-                            <i class="fa-solid fa-hospital-user text-2xl" style="background: linear-gradient(135deg, #4f46e5, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                        <div class="w-full h-full bg-white rounded-[10px] sm:rounded-[14px] flex items-center justify-center text-indigo-600">
+                            <i class="fa-solid fa-hospital-user text-lg sm:text-2xl" style="background: linear-gradient(135deg, #4f46e5, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
                         </div>
                     </div>
                     <div>
-                        <h1 class="text-xl sm:text-2xl font-display font-extrabold tracking-tight text-slate-900">
+                        <h1 class="text-base sm:text-xl lg:text-2xl font-display font-extrabold tracking-tight text-slate-900 leading-tight">
                             {{ $settings['hospital_name'] ?? 'POLIKLINIK EKSEKUTIF' }}
                         </h1>
-                        <p class="text-xs text-slate-500 font-medium">{{ $settings['hospital_subtitle'] ?? 'Sistem Monitoring Terintegrasi & Alur Pasien Prioritas' }}</p>
+                        <p class="hidden sm:block text-xs text-slate-500 font-medium">{{ $settings['hospital_subtitle'] ?? 'Sistem Monitoring Terintegrasi & Alur Pasien Prioritas' }}</p>
                     </div>
                 </div>
 
@@ -294,8 +294,8 @@
     <!-- Main Content Container: Tampilan Web Dashboard Operasional Lengkap -->
     <main class="w-full px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-5 sm:py-6 relative z-10 flex-1">
 
-        <!-- Section 1: 4 KPI Cards (Full Width 4-Col Grid) -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+        <!-- Section 1: 4 KPI Cards (Responsive 1-Col Mobile, 2-Col Tablet, 4-Col Desktop Grid) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 mb-6">
             
             <!-- KPI 1: Total Pasien -->
             <div class="glass-card p-5 sm:p-6 rounded-3xl relative overflow-hidden group flex flex-col justify-between">
